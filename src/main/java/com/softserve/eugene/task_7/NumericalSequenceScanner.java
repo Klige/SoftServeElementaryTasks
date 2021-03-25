@@ -17,23 +17,25 @@ public class NumericalSequenceScanner {
             System.out.println("Input " + value + ":");
             number = scanner.nextInt();
         } catch (InputMismatchException ex) {
-            System.err.println("Must be a number");
-            number = parseLengthInt(value);
+            System.err.println("Entered value must be integer");
+            number = parseInt(value);
         }
         return number;
     }
 
     public int parseLengthInt(String value) {
         int number = parseInt(value);
-        if (!validator.sequenceLengthValidator(number)) {
+        if (!validator.isSequenceLengthValid(number)) {
+            System.err.println("Sequence length must be > 0");
             number = parseLengthInt(value);
         }
         return number;
     }
 
-    public int parseMinimalSquareInt(String value) {
+    public int parseMinimalSquareInt(String value){
         int number = parseInt(value);
-        if (!validator.minimalSquareValidator(number)) {
+        if (!validator.isMinimalSquareValid(number)) {
+            System.err.println("Minimal square must be >= 0");
             number = parseMinimalSquareInt(value);
         }
         return number;
